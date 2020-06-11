@@ -1,0 +1,403 @@
+JAVASCRIPT NOTES
+
+
+
+
+
+javascript is dynamically typed
+
+console		=	A keyword to that allows methods of 
+			interraction w developers, such as printing logs
+			
+			
+comments	=	//	single line
+			/*...*/	multi line
+			
+data types
+==========
+
+Number		=	Any number, including decimals.
+
+String		=	Any group of characters, such as text
+			preferably surrounded by single quotes '...'
+
+Boolean		=	A true or false value
+			states as _true_ or _false_ (w/o underscores)
+			
+Null		=	the absense of a value
+
+Undefined	=	also denotes absense of a value
+			this data type occurs when a variable is created
+			without a value
+
+Symbol		=	unique and used in more complex coding ;)
+
+Objects		=	Collections of related data
+			objects are the only "complex" data type,
+			compare with the other six being "primitive"
+			examples include the console object, math object,
+			and other built in objects that allow you to perform
+			more complex tasks.
+			
+Operator	=	a character that performs a specific task, like
+			arithmetical calculations, like  +  -  *  /  %
+
+			these operators can be used on numbers, integers,
+			and in the case of +, you can also concatenate
+			strings.
+			
+==========
+
+		
+			
+arithmetic	=	built-in operators include +, - , *, /, and %
+operators
+			
+			
+properties	=	Objects (and other data types) can have properties,
+			which are different types of stored information.
+			properties are denoted with a their name, and
+			attached to the object with a period, such as 
+			An example would be that every string instance has a
+			property of "length," which is the number of
+			characters it consists of.
+
+methods		=	Objects (and other data types) can have methods which
+			perform actions, usually on the objects. methods are
+			called in the same way as properties.
+			
+			
+variables	=	variables are containers for values.
+			you can create variables that have a descriptive name
+			you can store and update information in a variable
+			and  you can retrieve information stored in variables
+			
+let		=	let creates (or declares) a variable giving it a name
+			and (if you wish at the time) an initial value. A
+			variable will have a value of undefined if it isn't
+			defined when it's declared.
+			variable names:
+			cannot begin with a number,
+			should be "camel-cased,"
+			and cannot have the same names as keywords.
+			
+const		=	const behaves similarly to var or let, however when
+			you declare a variable with const, it is a constant
+			variable which means that you cannot update its
+			value, you can only retreive it. Because of this, you
+			*must* assign constant variables a value when declaring
+			them.
+			
+incrementing/	=	we can increment or decrement variables by using
+decrementing		++ or --
+			for example: a single line of code to increment the
+			variable 'a' by 1 would look like
+			a++;
+			
+			
+concatenation	=	you can concatenate strings together using the '+'
+			operator. This will append strings to one another
+			as is. You can also do this with variables.
+			
+
+
+Interpolation /			
+template	=	template literals allow you to interpolate values
+literals		into strings with backticks (`) and ${...}.
+			e.g. sayHi = `What's up, ${name}?`;
+
+typeof		=	this operator can be used to figure out what data-
+			type a certain variable currently is (since variables
+			in javascript are dynamically typed).
+			
+comparison	=	comparison operators compare two variables or values
+operators		and determine whether or not the comparison is true
+			these consist of
+			<, >, <=, >=, ==, !==
+			and also ===, and !== which check to see if the
+			values being compared are *precisely equal to one
+			another (wheras == and != check to see if their
+			converted values are equivalent or not, where 0, NaN
+			and "" are 'falsey' and get converted to 0)
+			
+
+conditional
+statements
+==========
+
+if statements	=	if statements evaluate a condition (which evaluates
+			to true or false) and then proceed to execute a
+			specific task. format is:
+			if (condition) {
+			//code to execute
+			}
+
+else statements	=	else statements are used to run a block of code when
+			the initial if statement evaluates to false.
+			simply 
+			
+logical		=	in order to add logic to conditional evaluations,
+operators		we use logical operators to evaluate the conditional
+			truth of more than one statement.
+			&&, ||, and !
+			
+			Logical operators can be used when defining variables
+			such as:
+			let defaultName = username || 'stranger';
+			here, if username is undefined, defaultName will be
+			defined as = 'stranger'
+			also known as "short circuit evaluation.
+			
+			
+truthy &	=	truthy values are values that are defined, not null,
+falsy			exist, greater than 0 &c. where as falsy values are 0,
+			undefined, empty strings, null, or not numbers.
+			
+			
+ternary		=	the '?' operator can be used as a short hand for an
+operators		if...else statement as follows:
+			isTrue ? console.log('it's true') :
+			console.log('it's false');
+			or
+			saysDunko === 'Dunko' ? console.log('it says Dunko') :
+			console.log('it doesn't say Dunko');
+			the semicolon separates the 2 expressions of the
+			block of code. The ? mark indicates that if the
+			expression is true, the first block of code will
+			execute if it's false, the second will execute.
+			
+			
+else if		=	else if statements allow your code to execute more
+			than 2 possible statements. It basically works like
+			a daisy chain, working from top to bottom such
+			that the first condition that evaluates to true
+			will execute.
+			example:
+			
+			if (donkey === 1) {
+			console.log('1');
+			} else if (donkey === 2) {
+			console.log('2');
+			} else if (donkey === 3) {
+			console.log('3');
+			} else if (donkey === 4) {
+			console.log('4');
+			} else {
+			console.log('?');
+			}
+			
+			
+switch		=	a switch statement allows you to check many different
+			values in a more elegant format than writing separate
+			if else statements.
+			a switch statement starts by indicating the value or
+			expression that each following 'case' will compare.
+			the block follows, where potential cases of the value
+			are listed, determining which case to run. Each case
+			ends with a 'break' statement that tells the
+			computer to exit the block. there is also a 'default'
+			statement which will run if none of the cases are
+			true. e.g.:
+			switch (dunkChunk) {
+			  case 'conk':
+			    console.log('It's conkin time');
+			    break;
+			  case 'wonk':
+			    console.log('it's wonkin time');
+			    break;
+			  case 'donk':
+			    console.log('it's DONKin time!');
+			    break;
+			  default:
+			    console.log('not sure what time it is!');
+			    break;
+			}
+==========
+
+
+functions
+=========
+			functions are used to perform a generalized task in
+			multiple different scenarios
+			
+
+declaration	=	functions are declared using the function keyword,
+			followed by the function identifier (with
+			parentheses), then followed by a block of code.
+			e.g.
+			function greetWorld() {console.log('Hello World'); }
+		
+		
+hoisting	=	this feature of JS allows functions to be called
+			earlier in the code than they are defined. Functions
+			will work when declared later, however this is not
+			good practice.
+			
+
+calling		=	in order for the code within a function to run, the
+			function needs to be called. this is done by
+			typing the name of the function followed by
+			parentheses.
+
+
+parameters	=	parameters are declared in the parentheses
+			following the functions name when the function
+			is first declared. They are defined when the
+			function is called, and a value is given to
+			them in that call.
+			Parameters can have a predetermined value
+			in case there is no value declared when the
+			function is called. the parameters is set to
+			equal a default value when the function is
+			declared, which is overwritten in the case
+			that the parameter is given.
+			e.g. (with and without default)
+			function callMeDonkey(name = 'buddy') {
+				console.log('Hey ' + name + ', you're a
+				donkey!');
+				}
+			callMeDonkey('Remy');
+			//if we didn't input 'Remy' when we called the
+			//function, it would default to 'buddy'
+
+return		=	the results of the function are evaluated and
+			output. By default, the results are undefined.
+			in order to print or output any results of
+			the code block within the function, the
+			results need to be captured with a return.
+			Using the return keyword, we declare what
+			will be returned, usually in the form of a
+			variable or other value. When the return is
+			reached, the code will stop -- e.g. in the
+			case of an if...else statement, if there is
+			a return within the block, that will exit
+			the function with that return before some
+			later, potentially default return is executed
+			
+			
+			
+function	=	function expressions can be defined within a
+expressions		variable declaration. when doing so, the
+			function is declared without a name, and is
+			referred to as an anonymous function. e.g.
+			const howManyDonkeys = function(cols, rows) {
+				const howMany = cols * rows;
+				return howMany;
+			}
+			howManyDonkeys(4, 4);
+			
+			N.B. function expressions cannot be hoisted!
+			
+
+arrow functions	=	a shorthand for declaring functions is using
+			the so-called "fat arrow" notation: =>
+			The parameters are first indicated within
+			the parentheses
+			
+			also, functions with only a single parameter do not
+			need that parameter to be enclosed in ().
+			
+			also, functions that are only a single-line block
+			don't need to be enclosed in curly braces;
+			the block contents will immediately follow
+			the => and there is no return keyword needed (as
+			it's assumed).
+			e.g. a conversion of the last function
+			const howMany = (cols, rows) => cols * rows;
+			
+=========
+
+
+scope		=	scope defines where variables can be accessed
+			or referenced within a program.
+
+arrays
+======
+			
+arrays		=	arrays store collections of data -- an
+			individual array can store similar data types
+			or different ones. arrays are 0 indexed,
+			so that elements in an array are counted off
+			from left to right starting at 0.
+			e.g.
+			const donkey ['1 banana', 'double dink']
+
+			const[0] would here equal '1 banana'
+			(strings can be treated in a similar way,
+			since they are indexed,	such that:
+			let donkey = 'Big Dink';
+			donkey[3] would = 'g'
+			
+			indexes outside of an array's currently
+			defined range = undefined.
+			
+			arrays have length, equal to the number of
+			elements stored within them.
+			
+			
+push method	=	the push method can be used to add elements
+			at the end of an array. push returns the new
+			length of the array.
+			
+
+pop method	=	the pop method removes the last item of an
+			array. pop returns the item that was removed
+			
+shift method	=	shift removes the first item of an array, and
+			returns that item.
+			
+unshift	method	=	unshift adds an item to the beginning of an
+			array, and returns the new array length.
+			
+slice method	=	the slice method returns a smaller array
+			consisting of the elements with indexes
+			contained within the numbers of the arguments
+			passed to the slice method. the start is
+			inclusive, the end is exclusive
+			e.g. dinky.slice(1, 4); will return
+			elements 1, 2, and 3.
+			
+
+indexOf method	=	the indexOf method returns the index number
+			of the first instance of a value passed as 
+			an argument to the method. If the element is
+			not found -1 will be returned.
+			
+
+array scope	=	if an array is called and modified within a
+			function, the array is mutated outside of the
+			function.
+			
+
+nested arrays	=	arrays can contain other arrays, referred to
+			as nested arrays. if an element in an array
+			is an array, and you want to refer to an
+			element contained within this second array,
+			the syntax for these nested indexes would be
+			nestedArray[1][2], which would call the third
+			array element of the array contained in the
+			second array item of nestedArray.
+======
+
+
+loops
+=====
+			a programming tool that repeats an action
+			until a stopping condition is satisfied.
+
+
+for loop	=	consists of an initialization, a stopping
+			condition, and an iteration statement, a for
+			loop checks against the iterator variable to
+			see whether or not it's time to stop.
+			e.g.
+			for (let count = 0; count < 4; count++) {
+			... }
+			
+
+nested loops	=	when you have a loop running inside another
+			loop. duh.
+
+while loop	=
+
+=====
