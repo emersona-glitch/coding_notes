@@ -1,1 +1,24 @@
 GIT NOTES
+=========
+
+Download GIT:
+download from browser, OR
+$ xcode-select --install
+//will install xcode tools
+
+
+Check to see if you have GIT:
+git --version
+//should print version of GIT installed.
+
+
+Configuring GIT:
+git config --global user.name "[your username]"
+git config --global user.email "[your email]"
+//you can check what these are set to by typing the above commands
+//without the username/email argument
+
+"git," when typed into the terminal, is a command,
+the "config" is called a task, which is performed by the git
+command. The "--global" is a flag (which in this case indicates to
+set the username/email globally for the whole computer).
