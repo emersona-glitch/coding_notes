@@ -89,12 +89,9 @@ decrementing		++ or --
 			variable 'a' by 1 would look like
 			a++;
 
-
 concatenation	=	you can concatenate strings together using the '+'
 			operator. This will append strings to one another
 			as is. You can also do this with variables.
-
-
 
 Interpolation /
 template	=	template literals allow you to interpolate values
@@ -116,9 +113,9 @@ operators		and determine whether or not the comparison is true
 			and "" are 'falsey' and get converted to 0)
 
 
-conditional
-statements
-==========
+
+CONDITIONAL STATEMENTS
+======================
 
 if statements	=	if statements evaluate a condition (which evaluates
 			to true or false) and then proceed to execute a
@@ -143,11 +140,9 @@ operators		we use logical operators to evaluate the conditional
 			defined as = 'stranger'
 			also known as "short circuit evaluation.
 
-
 truthy &	=	truthy values are values that are defined, not null,
 falsy			exist, greater than 0 &c. where as falsy values are 0,
 			undefined, empty strings, null, or not numbers.
-
 
 ternary		=	the '?' operator can be used as a short hand for an
 operators		if...else statement as follows:
@@ -160,7 +155,6 @@ operators		if...else statement as follows:
 			block of code. The ? mark indicates that if the
 			expression is true, the first block of code will
 			execute if it's false, the second will execute.
-
 
 else if		=	else if statements allow your code to execute more
 			than 2 possible statements. It basically works like
@@ -181,7 +175,6 @@ else if		=	else if statements allow your code to execute more
 			console.log('?');
 			}
 
-
 switch		=	a switch statement allows you to check many different
 			values in a more elegant format than writing separate
 			if else statements.
@@ -193,6 +186,7 @@ switch		=	a switch statement allows you to check many different
 			computer to exit the block. there is also a 'default'
 			statement which will run if none of the cases are
 			true. e.g.:
+			let dunkChunk = 'wonk';
 			switch (dunkChunk) {
 			  case 'conk':
 			    console.log('It's conkin time');
@@ -207,7 +201,8 @@ switch		=	a switch statement allows you to check many different
 			    console.log('not sure what time it is!');
 			    break;
 			}
-==========
+======================
+
 
 
 functions
