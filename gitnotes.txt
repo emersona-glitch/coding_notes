@@ -13,8 +13,8 @@ git --version
 
 
 Configuring GIT:
-git config --global user.name "[your username]"
-git config --global user.email "[your email]"
+$ git config --global user.name "[your username]"
+$ git config --global user.email "[your email]"
 //you can check what these are set to by typing the above commands
 //without the username/email argument
 
@@ -22,3 +22,63 @@ git config --global user.email "[your email]"
 the "config" is called a task, which is performed by the git
 command. The "--global" is a flag (which in this case indicates to
 set the username/email globally for the whole computer).
+
+
+Initializing:
+$ git init
+//this will initialize an empty repository (or reinitialize an
+//existing repository).
+
+$ git status
+//this will print the status of your branch of the repository. If
+//no new files exist, you will be told that the branch is up to
+//date. If there are new or modified files, these files will be
+//listed as "changes not staged for commit." Any files that are
+//already staged for commit will be listed as well.
+
+
+$ git add .
+        or
+$ git add "/files"
+//the first command will add (or stage) all files in the directory
+//to be prepared for the commit. you can specify individual files
+//by naming them as in the second command.
+
+
+$ git commit -m "message"
+//this will actually save the changes made as a version.
+//different versions that are committed, you can see where you've
+//previously been
+
+
+Connecting to GitHub:
+Log on to github, and you can create a git repository on the web.
+After creating the repository, you can follow the instructions
+listed there to connect your local repository to the one hosted by
+github. After creating the repository on github...
+
+$ git init      //to initialize the repository on your computer
+$ git add README.md     //if you feel like it
+$ git commit -m "message"
+$ git remote add origin https://github.com/username/repository.git
+//the remote task is being used here to "add" a remote repository,
+//which is named 'origin,' to the url indicated.
+$ git push -u origin master
+//the push task pushes any staged files to the origin remote,
+//specifically pushing "master,"  (where we will work
+//with other brances in the future.)
+
+
+Forking a repository:
+//Go to Github, click "fork" in the upper right hand corner, this
+//will make a copy of the repository in your GitHub
+
+Cloning a repository:
+//Click the green "clone" button and copy the url that is given.
+//Open terminal, navigate to where you want the repository to be
+cloned to.
+$ git clone [url]
+
+
+Opening up an entire directory in atom:
+$ atom .
