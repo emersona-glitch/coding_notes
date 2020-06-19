@@ -82,3 +82,6 @@ $ git clone [url]
 
 Opening up an entire directory in atom:
 $ atom .
+
+
+Pulling a repository

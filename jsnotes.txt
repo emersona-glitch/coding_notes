@@ -35,7 +35,9 @@ Objects		=	Collections of related data
 			compare with the other six being "primitive"
 			examples include the console object, math object,
 			and other built in objects that allow you to perform
-			more complex tasks.
+			more complex tasks, as well as user created functions.
+==========
+
 
 Operator	=	a character that performs a specific task, like
 			arithmetical calculations, like  +  -  *  /  %
@@ -43,9 +45,6 @@ Operator	=	a character that performs a specific task, like
 			these operators can be used on numbers, integers,
 			and in the case of +, you can also concatenate
 			strings.
-==========
-
-
 
 arithmetic	=	built-in operators include +, - , *, /, and %
 operators
@@ -103,14 +102,18 @@ typeof		=	this operator can be used to figure out what data-
 			in javascript are dynamically typed).
 
 comparison	=	comparison operators compare two variables or values
-operators		and determine whether or not the comparison is true
+operators		and determine whether or not the comparison is true.
 			these consist of
 			<, >, <=, >=, ==, !==
-			and also ===, and !== which check to see if the
+			and also
+			===, and !==
+			which check to see if the
 			values being compared are *precisely equal to one
 			another (wheras == and != check to see if their
 			converted values are equivalent or not, where 0, NaN
 			and "" are 'falsey' and get converted to 0)
+			in other words, === and !== check to see if the values
+			are equivalent AND of the same type.
 
 
 
@@ -215,8 +218,17 @@ declaration	=	functions are declared using the function keyword,
 			followed by the function identifier (with
 			parentheses), then followed by a block of code.
 			e.g.
-			function greetWorld() {console.log('Hello World'); }
 
+			function greetWorld() {
+				console.log('Hello World');
+			}
+			//this function has no parameters
+
+			function callName(name) {
+			console.log(`${name} is an idiot`)
+			}
+
+			N.B. no ';' after the last curly bracket
 
 hoisting	=	this feature of JS allows functions to be called
 			earlier in the code than they are defined. Functions
@@ -242,13 +254,15 @@ parameters	=	parameters are declared in the parentheses
 			declared, which is overwritten in the case
 			that the parameter is given.
 			e.g. (with and without default)
+
 			function callMeDonkey(name = 'buddy') {
 				console.log('Hey ' + name + ', you're a
 				donkey!');
-				}
+				};
 			callMeDonkey('Remy');
 			//if we didn't input 'Remy' when we called the
 			//function, it would default to 'buddy'
+
 
 return		=	the results of the function are evaluated and
 			output. By default, the results are undefined.
@@ -270,6 +284,7 @@ function	=	function expressions can be defined within a
 expressions		variable declaration. when doing so, the
 			function is declared without a name, and is
 			referred to as an anonymous function. e.g.
+
 			const howManyDonkeys = function(cols, rows) {
 				const howMany = cols * rows;
 				return howMany;
@@ -292,7 +307,8 @@ arrow functions	=	a shorthand for declaring functions is using
 			the block contents will immediately follow
 			the => and there is no return keyword needed (as
 			it's assumed).
-			e.g. a conversion of the last function
+
+			e.g. (a conversion of the last function)
 			const howMany = (cols, rows) => cols * rows;
 
 =========
@@ -409,5 +425,282 @@ break		=	the break keyword will break out of a loop at a
 			}
 =====
 
-Iterators
+ITERATORS
+&
+HOFs
 =========
+
+higher order
+functions	=	Higher order functions are functions that accept
+			other functions as their input. More abstraction
+			can lead to greater readability and modularity.
+
+parameters
+vs.		=	parameters are the abstract place holders for values
+arguments		in a function that are created when a function is
+			created, whereas arguments are the actual, concrete
+			values that get passed to the function at the time that
+			it is called or when it runs.
+
+invoking
+vs.		=	calling a function is when you directly call it, such
+calling			as $ func();	whereas invoking it would be a
+			when the function is called by some other process, e.g.
+			$ donkey(func);		????
+
+
+callback	=	a callback function is a function that will run
+functions		once another function has finished running (??).
+			***Any function that is passed as an argument to a
+			function is a callback function***
+
+passing functions
+as arguments	=	When we pass a function as an argument to another func-
+			tion, we don't invoke the function, so when it is
+			listed (e.g. func1(func2, func3, &c...); ) we don't
+			write it with parentheses. If it were listed with
+			parentheses, and therefor invoked, it would be the same
+			as passing that function's return as an argument,
+			and that would be the value of the argument that is
+			used in the "outer" function.
+			Instead, we want to only indicate the function that we
+			want to run, and once it is ready it will be
+			invoked within the outer function.
+
+iterators	=	Some methods can be used on arrays and other "list-like"
+			data where the method will "iterate" through the
+			entire list and apply a function or a mapping to some
+			or all of the elements.
+
+			any iterator method has its own specific syntax and
+			way of evaluating its input to produce its output.
+			Please refer to the documentation for specific syntax
+			descriptions.
+
+			the folllowing are some examples:
+
+.forEach()	=	this method will execute the same code on each element
+			of an array. to use it on an array, use dot notation
+			(array.foreach()) and then pass it a function as an
+			argument. Its return is undefined.
+			e.g.
+			const letters = [a, b, c, d, e];
+			letters.forEach(letter => {console.log(letter);});
+			//this will simply print off the letters in sequence
+
+.map()		=	the map method will return a new array that is the
+			result of running the given callback function on a
+			pre-existing array.
+			e.g.
+			const numbers = [1, 2, 3, 4, 5]
+			const addFive = numbers.map(number => {
+				return number + 5;
+				});
+
+			or, without arrow notation
+
+			const addFive.map(function add(number) {
+			return number + 5;
+			})
+
+.filter()	=	the filter method will also return a new array, however
+			this new array will return a subset of the original
+			elements of the first array, after running a function
+			on those elements which will return a boolean value;
+			those elements that result in 'true' will be included
+			in the new array and those that return 'false' will be
+			excluded.
+			e.g.
+			const numbers = [1, 2, 3, 4, 5];
+			const greaterThanTwo = numbers.filter(number => {
+			return number > 2;
+			});
+
+.findIndex()	=	the findIndex method will check through an array to
+			find the first element that matches that value given,
+			and will return its index number.
+			e.g.
+			const numbers = [1, 2, 3, 4, 5];
+			const indexOfFour = numbers.findIndex (
+				number => number === 4
+			);
+=========
+
+OBJECTS
+=======
+			objects are essentially containers which contain
+			data and functionality with some sort of relation,
+			or in terms stated in the MDN documentation:
+			an object is a data structure containing data and
+			instructions for working with the data
+
+object literals	=	{} are used to indicate that we wish to assign an object
+			to a variable.
+
+key-value pairs	=	when we fill an object with data, we do so by indicating
+			values that are stored in memory with a name that refers
+			to their location, with each pair being separated by
+			a colon. Keys are strings, and in this case, if there
+			are no special characters in a key, no quotation marks
+			are needed.
+			e.g.
+			let classRoster = {
+				studentA: 'Sarah',
+				studentB: 'Julian',
+				studentC: 'Rosco'
+			};
+
+properties	=	each property of an object is a key-value pair.
+			properties can be accessed either by using dot notation
+			(e.g. object.property) or by using bracket notation
+			(e.g. object[property]). In the instance that a
+			property is indicated by a key with special characters
+			(spaces, numbers, &c.), you MUST use bracket notation,
+			though you can also use bracket notation with key-names
+			that you could also indicate via dot notation.
+			With bracket notation, you can also pass a variable
+			inside the brackets to select the key you are looking
+			for, where you can't do this with dot notation.
+
+assignment	=	properties can be either reassigned / updated or added
+			to an object by writing
+			object[property] = value;
+			even if an object was declared with const you can still
+			"mutate" it with assigning values to its properties.
+
+			you can delete a property from an object by using the
+			delete operator. e.g.
+			delete object.property;
+
+methods		=	when data stored in an object is a function, that's
+			called a method just like methods for built-in objects
+			that we've been using so far. The syntax is slightly
+			different since the key acts as the way we refer to the
+			function, so when we declare it, we do so as an anon-
+			ymous function e.g.
+			key: function () {...code...};
+			or more tidy:
+			key () {...code...};
+
+			methods are invoked by listing the object name with the
+			dot operator and the method name with parentheses, e.g.
+			object.method();	// with any variables in the
+						// parentheses
+
+nested objects	=	you can nest objects by assigning objects as properties
+			e.g.
+			object: {
+				nestObj: {
+				   prop1: 'boink',
+				   prop2: 'zoink',
+				   prop3: 'doink'
+				}
+			}
+			and call them like:
+			objects.nestObj[prop1]
+
+passed by
+reference	=	when a variable within an object is passed into a
+			function as an argument, the function looks at the
+			location in memory where that value is stored, so if an
+			object is mutated within a function, it stays mutated
+			outside of that function.
+
+for...in	=	for...in loops will iterate through each property of an
+			object while executing a block of code.
+			e.g.
+			for (let prop in object.property) {
+			console.log(object[prop]);
+			};
+			//NB you must use bracket notation for the variable
+			//defined in the for...in loop
+
+this		=	the 'this' keyword provides access to a 'calling' object
+			when you are writing a method inside of an object.
+			e.g.
+			const object = {
+			prop1: 23,
+			prop2: 47,
+			method () {
+			return `prop1 is ${this.prop1} and prop2 is
+			${this.[prop2]}`;
+			}
+			};
+
+			when using => functions in an object, the 'this' keyword
+			will bind to that function and will therefor usually
+			print undefined, so AVOID using arrow functions in
+			object methods. (which is kinda weird imho because the
+			shorter syntax that you can use in a function is shorter
+			than the arrow function syntax but w/e...)
+
+privacy		=	the concept of privacy in objects concerns whether or
+			not a property is something we want to be mutable.
+			In JAVASCRIPT, there is no built in way to ensure object
+			privacy, so devs use an underscore at the beginning of a
+			property name to indicate that it shouldn't be modified.
+
+getters		=	getter methods return internal properties of objects
+			using the get keyword. While retrieving information,
+			getters can also return different information based on
+			conditional statements. getter methods can be called
+			without parentheses. e.g.
+			let object  = {
+				prop1: 23,
+				prop2: 'bub',
+				get printBoth() {
+					if (this.prop1 && this.prop2) {
+						return `${this.prop1} ${this.prop2}`;
+					} else {
+						return 'something's missing!';
+					}
+				}
+			};
+			console.log( object.printBoth );
+			//prints '23 bub'
+
+
+setters		=	setter methods access internal properties of an object
+			and can also set or re-assign some of those properties.
+			You also don't need parentheses for setter methods, and
+			from the outside it just looks like you're reassigning a
+			property of the object, however setter methods also
+			allow you to check input to see if something is
+
+			let object = {
+				prop1: 24
+				set propChange(newProp) {
+					if (typeof newProp == 'number') {
+					prop1 = newProp;
+					} else {
+					console.log('this needs to be a number');
+					}
+				}
+			};
+			object.setMeth = 'newvalue';
+			//would log the above statement
+			//also -- setter methods don't need to be called w
+			//parentheses -- setter methods need precisely one
+			//variable.
+
+			getters and setters are NOT functions.
+
+			Get and Set behave as properties, and they can use the
+			same name because of the dependency set has on get, and
+			because they are both 'running' on the same variable.
+			They are also both able to be used with the same name
+			because of the unique way that you 'call' them,
+			respectively:
+
+			console.log( object.newProp );	//for getters
+			object.newProp = 43;		//for setters
+
+factory
+Functions	=				
+
+
+
+
+
+
+=======
