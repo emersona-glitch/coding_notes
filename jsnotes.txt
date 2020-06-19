@@ -683,7 +683,8 @@ setters		=	setter methods access internal properties of an object
 			//parentheses -- setter methods need precisely one
 			//variable.
 
-			getters and setters are NOT functions.
+			getters and setters are NOT functions. They do net
+			get invoked, they get called.
 
 			Get and Set behave as properties, and they can use the
 			same name because of the dependency set has on get, and
@@ -696,7 +697,48 @@ setters		=	setter methods access internal properties of an object
 			object.newProp = 43;		//for setters
 
 factory
-Functions	=				
+Functions	=	Factory functions 'manufacture' multiple instances of
+			similar objects. They are written as a function assigned
+			to a variable, and are then called when declaring a new
+			object, supplied with the required inputs, where they
+			return an object with the desired properties.
+
+			const objectFactory = (name, property) => {
+  			return {
+    				name: name,
+    				property: property,
+    				sayHi() {
+      					console.log('Hello!');
+    					}
+  				}
+			};
+
+			const object = objectFactory('Bumpo', true );
+			object.sayHi(); //would print 'Hello!' to console.
+
+
+			When creating factory functions, for each property
+			that's going to be assigned a new property, there is
+			a shorthand available:
+			whereas above we typed
+			$ name: name, property: property
+			and so on, we simply need to write
+			$ name, property, &c.
+
+
+			In the case of properties being assigned to variables,
+			there is a similar 'destructuring' technique that can
+			be used. Instead of:
+			const { propertyName } = object.propertyName;
+			const { propertyName } = object;
+
+			When assigning properties to a new variable, the new
+			variable receives all other nested properties and
+			functions that the object's original property had
+			associated with it.
+
+methods		=	All objects have built-in methods that can be called on
+			them, 
 
 
 
