@@ -1,0 +1,220 @@
+HTML NOTES
+
+HTML = 		Hyper text markup language
+
+CSS = 		Cascading style sheets
+
+(html files can have their own "in-line" style descriptions")
+
+
+comments =	In HTML, we can comment things out by including them 
+		within <!--  comment goes here  -->
+		In CSS we use /*  comment goes here  */
+
+
+element = 	component of an html file to be compiled.
+		elements begin with an opening tag and a closing tag
+		e.g. 	<h1> blahblahblah </h1>
+
+
+heading = 	heading elements are referred to with <hx> where x is
+		a number between 1 and 6, for the six sizes from largest
+		to smallest, respectively. the text in between the tags
+		will be displayed as a header
+
+
+paragraph =	referred to with <px> as above
+
+
+anchor = 	link to  other web pages. The text in between the tags will
+		be displayed, and the href attribute's value (included in
+		the opening tag) will be the URL that the anchor directs to.
+		e.g.	<a href="https://www.ding.com/">Go to Ding!</a>
+
+
+attribute = 	a piece of code that customizes a certain element, usually
+		included in the opening tag
+		attributes have a name and a value, of the form x = y
+		e.g.	href	=	"https://www.ding.com/"
+			(name)		value
+
+
+image = 	image elements are self closing and do not need closing tags
+		the "source" attribute links to an image file, often as a URL
+		e.g.	<img src="https://bigdink.com/donkey.jpg"/>
+
+
+video = 	video elements have several attributes, some of which are
+		technically optional. width & height adjust those settings
+		controls (which doesn't need a value) inserts user controls,
+		src sets the source url and type indicates the video format
+		e.g. 	<video width="320" height="240" controls>
+				<source src="donkey.mp4" type="video/mp4">
+			</video>
+
+
+lists = 	unordered lists list items (all sorts of elements with
+		bullets with the tags <ul> [list] </ul>
+		listed items are tagged with <li> [item] </li>
+		e.g.	<ul>
+				<li>List item</li>
+				<li>Another item</li>
+			</ul
+
+
+parent =	parent elements enclose other elements called children.
+		in the above example with unordered lists, the <ul></ul>
+		tags are the parent element for the <li></li> tags
+
+
+div =		div elements are used to enclose groups of other elements,
+		often used with the "class" attribute, and usually in order
+		to be styled and organized together
+		e.g.	<div class="stuff">
+				[...stuff elements...]
+			</div>
+
+
+metadata = 	metadata communicates information to the browser regarding
+		how to interprate the HTML file, but are not visible to a
+		user visiting the webpage.
+		e.g. 	<!DOCTYPE html>
+			indicates to the browser to read the file as an
+			HTML document.
+			
+			<html>...</html>
+			root and parent of all other HTML elements
+			
+			<head>.../head>
+			encloses other metadata, such as the title
+			
+			<title>...</title>
+			the sites title, which appears at the top of the
+			browser window, for instance.
+			
+			<meta charset="utf-8"/>
+			indicates what character set to use.
+			
+			
+link = 		the link element links a CSS file to an HTML file
+		it uses the attributes:
+		rel, which indicates the relationship between the file
+		the element is listed in and the file being referred to
+		in the rel attribute value
+		type, indicates what the file type the linked file is
+		href, provides the URL of the file being linked to
+		e.g.	<link rel="stylesheet" type="text/css"
+			href="dink.css"/>
+			
+			
+rule = 		CSS files are made of rules, which are lists of instructions
+		for how to style an HTML element or group of elements
+
+selector = 	specifies what element(s) to style
+		
+properties = 	properties specify, via a value, what aspect of the selected
+		element to style.
+		
+		e.g.	h1 {
+				color: red;	## don't forget the ;   (:
+			}
+			
+			
+font-family = 	this property sets the font family to be used for the element
+		e.g.	font-family: Georgia, serif;
+		here, "serif" is the fall-back font which is used in case
+		the user's web browser doesn't support the original font.
+		more than one fall-back font can be used
+		(font names with spaces can be enclosed in 'single quotes')
+		
+		
+font-size =	sets the class's or element's font-size in terms of pixels,
+		rems, or ems.
+		e.g.	font-size: 60px;	## sets font size to 60
+						## pixels
+		
+		e.g.	font-size: 1rem;	## sets the font size to
+						## 1 rem which is about 16px
+		
+		e.g.	font-size: 1em;		## sets the font-size of the
+						## element to 1/1 of the
+						## parent element's font-size
+		
+		e.g.	font-size: 0.5em;	## sets the font-size of the
+						## element to 1/2 of its
+						## parent element's.
+		
+
+background-image =	sets a background image for a selector
+		e.g.	.class {
+		background-image: url("https://www.donkey.com/dunk.jpg");
+		}
+		
+
+background-size = 	sets the background size.
+		e.g.	.class {
+		background-size: cover;
+		}
+
+
+color =		this property sets the color of a selector
+		colors can be referred to by 140 named colors, hex colors,
+		or RGB colors 
+		e.g.	color: red;
+			color: #0000FF;
+			color: rgb(46,105,163);
+			
+			
+classes = 	HTML classes can be selected for styling. Classes can be used
+		on more than one element, and an individual element may have 
+		more than one class that applies to it.
+		e.g.	<div class="header"> ... </div>		## in the html
+			
+			.header {			
+				color:	#294823			## in the css
+			}
+			
+			
+id =		to style single elements differently than other elements of
+		a class, you can use the id attribrute and give its selector
+		a specific property in the css. An id can only be used
+		once in a document, and any element can only have one id.
+		e.g.	<p id="frank">Top Dog</p>		## in html
+		
+			#frank {				## in css
+				font-size: 12rem;
+			}
+			
+			
+	class selectors start with:
+	.class {...}
+	
+	id selectors start with:
+	#id {...}
+	
+	general element (?) selectors are just
+	element {...}
+
+
+content =	content of a webpage includes text, images, and other media
+		or visual elements available to the user.
+
+
+padding =	this is the (empty) space between the content in question and
+		the border around it. (similar to matting for a picture)
+		e.g. 	.head {
+			padding: 10px;
+		}
+
+
+border = 	This is the outline of an element on the page. we can set its
+		size, quality, and color, among other things.
+		(similar to a picture frame)
+		e.g.	.head {
+			border: 10px solid #000
+
+
+margin =	this is the space between the HTML page element and the
+		next nearest elements.
+
+

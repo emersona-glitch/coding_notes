@@ -1,0 +1,32 @@
+puts = prints out a string on with a new line at the end
+
+print = prints out a string without a newline
+
+# at the beginning of the line turns it into a comment
+
+math symbols = + - / * % < > <= >= ==
+
+irb = run ruby at command line w arguments (interactive ruby shell)
+
+name a variable like:
+
+cars = 100
+(integer)
+
+cars = "100"
+(string)
+
+cars = 100.0
+(floating point)
+
+to put a variable inside of a string between quotes:
+#{xxx}
+
+add strings together (i.e. append them) with the '+' symbol
+
+print a string multiple times with '*' (string goes first, then operator, then
+value it's multiplied by)
+
+double quotes will evaluate #{}'s, single quotes will print them as text
+
+(left off at ex8 and formatters)
