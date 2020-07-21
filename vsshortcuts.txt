@@ -1,0 +1,43 @@
+// shortcuts
+
+// option + [up] / [down]   - move line up or down
+
+// shift + cmd + K          - delete line
+
+// cmd + Enter (shift)      - insert line below (or above)
+
+// cmd + shift + \          - matching bracket
+
+// cmd + [  or  ]           - indent lines
+
+// cmd + /                  - comment
+
+// option + shift + A       - block comment
+
+//=========================
+
+// cmd + option + [up] / [down] - insert cursor above / below
+
+// cmd + L                  - select line
+
+// cmd + shift + L          - cursor at every instance of selection
+
+// cmd + option + shift + [up, down, left, right]
+                            
+//                          - box selection
+
+// cmd + K + F              - format selction
+
+// cmd + \                  - split editor / add pane
+
+// cmd + K, cmd + [arrows]  - focus next pane
+
+// cmd + B                  - toggle side-panel
+
+// cmd + K, Z               - zzzen mode
+
+// cmd + shift + [E, X, U] - explorer, extensions, 
+
+// ctrl + `                 - terminal
+
+

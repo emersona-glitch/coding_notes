@@ -333,7 +333,7 @@ arrays		=	arrays store collections of data -- an
 			(strings can be treated in a similar way,
 			since they are indexed,	such that:
 			let donkey = 'Big Dink';
-			donkey[3] would = 'g'
+			donkey[3] would = 'g')
 
 			indexes outside of an array's currently
 			defined range = undefined.
@@ -371,6 +371,7 @@ indexOf method	=	the indexOf method returns the index number
 			not found -1 will be returned.
 
 
+
 array scope	=	if an array is called and modified within a
 			function, the array is mutated outside of the
 			function.
@@ -400,6 +401,8 @@ for loop	=	consists of an initialization, a stopping
 			e.g.
 			for (let count = 0; count < 4; count++) {
 			... }
+
+for of loop	=	guh doyyyy same as for in but it works diff?
 
 
 nested loops	=	when you have a loop running inside another
@@ -526,6 +529,8 @@ iterators	=	Some methods can be used on arrays and other "list-like"
 			);
 =========
 
+
+
 OBJECTS
 =======
 			objects are essentially containers which contain
@@ -607,7 +612,7 @@ reference	=	when a variable within an object is passed into a
 			outside of that function.
 
 for...in	=	for...in loops will iterate through each property of an
-			object while executing a block of code.
+			object (or array) while executing a block of code.
 			e.g.
 			for (let prop in object.property) {
 			console.log(object[prop]);
@@ -665,7 +670,7 @@ setters		=	setter methods access internal properties of an object
 			You also don't need parentheses for setter methods, and
 			from the outside it just looks like you're reassigning a
 			property of the object, however setter methods also
-			allow you to check input to see if something is
+			allow you to check input to see if something is up.
 
 			let object = {
 				prop1: 24
@@ -684,7 +689,8 @@ setters		=	setter methods access internal properties of an object
 			//variable.
 
 			getters and setters are NOT functions. They do net
-			get invoked, they get called.
+			get invoked, they get called...or whatever...point being
+			that you don't write the code with parentheses.
 
 			Get and Set behave as properties, and they can use the
 			same name because of the dependency set has on get, and
@@ -738,11 +744,143 @@ Functions	=	Factory functions 'manufacture' multiple instances of
 			associated with it.
 
 methods		=	All objects have built-in methods that can be called on
-			them, 
-
-
-
+			them,
 
 
 
 =======
+
+
+
+CLASSES
+=======
+			Classes be like
+
+construct	=	Classes are primarily set apart from objects via the
+			constructor method, which is passed arguments when it
+			is called and then "distributes" these arguments to the
+			instances of the class that you are constructing.
+
+			class className {
+				constructor(arg) {
+				argument = arg;
+				etc.
+				}
+			}
+
+			and then creating classes, we use the new keyword
+			when declaring a variable like so:
+
+			const classInstance = new className(arg);
+
+
+instances	=	creating instances of classes requires you to declare
+			a variable which gets given a unique name (obv) and then
+			is fed arguments as input parameters when you call the
+			constructor class.
+
+methods		=	when creating constructor classes, methods do not get
+			separated by a comma, and they get listed outside of
+			the brackets enclosing the constructor block.
+
+			methods are listed inside classes like:
+			class className {
+				constructor(arg) {
+				argument = arg;
+				etc.
+				}
+
+				method (prop) {
+				//code to run etc.
+				}
+			}
+
+inheritance	=	when writing classes, you can write a parent class
+			which will allow you to create children classes from
+			this template, which they will share common properties
+			with and add their own unique properties.
+
+extends		=	using the extends keyword, we can use make the methods
+			of the parent class available within the child class.
+
+			class ParentClass {
+				constructor(prop, otherProp) {
+				this._prop = prop;
+				this._otherProp = otherProp;
+				}
+			}
+
+			class ChildClass extends ParentClass{
+				constructor(prop, otherProp, newProp) {
+					super(prop);
+					super(otherProp);
+					this._newProp = newProp
+				}
+			}
+
+super		=	super, as demonstrated above, tells the child class
+			to do with whatever prop is passed into super the same
+			as the parent class.
+
+static methods	=	when we want to create a method that is available to a
+			class but isn't dependent on any information in an
+			of the class, we can use a static method. We use the
+			'static' keyword, followed by the name of the method,
+			and the method's code.
+			Since we've used the static keyword, we can only call
+			the method by appending it to the Animal class, and
+			we cannot call it by appending it to an instance of the
+			class.
+=======
+
+
+
+TRANSPILATION
+=============
+
+caniuse.com	=	caniuse.com is a website created to allow developers to
+			test the functionality and compatibility of their code,
+			such as in the instance where there is a javascript,
+			html, or css update that may not have been "caught up"
+			with by the development of a web-browser.
+
+Babel		=	Babel is a javascript library that is developed to
+			allow you to use updated js languages (ES6 at the time
+			of this writing!) and then "translate them" (with the
+			library) into code that could be interpreted correctly
+			with an earlier version of the javascript.
+
+
+
+=============
+
+jQuery
+======
+
+
+
+		=	it's a library...hop in marty I got no time to explain!
+
+$		=	dollar sign indicates to call jQuery
+			e.g.
+			$( document ).ready( readyNow );
+
+			$ 	-- hey jQuery
+			(doc..)	--
+			.ready	-- waits until the DOM is ready to manipulate.
+			(func)	--
+
+
+			codecademy says to use .ready() to execute(?) all js
+			and jquery code...?
+			e.g.
+			$( document ).ready(() => {
+			...
+			});
+			this uses an anonymous callback function to execute
+			some stuff...wait htf do args work in this instance??
+
+
+
+
+======
