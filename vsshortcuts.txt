@@ -26,7 +26,7 @@
                             
 //                          - box selection
 
-// cmd + K + F              - format selction
+// option + shift + F              - format selction
 
 // cmd + \                  - split editor / add pane
 

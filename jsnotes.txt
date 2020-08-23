@@ -633,7 +633,7 @@ this		=	the 'this' keyword provides access to a 'calling' object
 			};
 
 			when using => functions in an object, the 'this' keyword
-			will bind to that function and will therefor usually
+			will bind to that function and will therefore usually
 			print undefined, so AVOID using arrow functions in
 			object methods. (which is kinda weird imho because the
 			shorter syntax that you can use in a function is shorter

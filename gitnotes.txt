@@ -85,3 +85,30 @@ $ atom .
 
 
 Pulling a repository
+
+//create new branch
+git branch [name of new branch]
+
+//tell me where I am
+git branch
+
+//go to branch
+git checkout [name of branch]
+
+//create and then checkout new branch
+git checkout -b [name of branch]
+
+//set your shit to write in the settings
+//add require pull request reviews
+
+//pull request select the things and go
+//merge it
+//pull it from github
+git pull origin master
+
+//youve got a new branch with conflicts with somebody elses stuff
+//dont do resolve conflicts in github
+git checkout master
+git pull origin master
+git checkout feature-branch
+git merge --no-ff master
