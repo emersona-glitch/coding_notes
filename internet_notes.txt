@@ -1,0 +1,450 @@
+What are Scopes and Closure
+======
+
+Scope refers to how a variable is treated within a program, environment, etc.
+For instance, a variable that is declared within a function is only "available"
+or "scoped" within that function. A variable that is declared globally then
+has a global scope
+
+Closure refers to the "boundaries" of that scope, in the sense that one
+function or "scope-level" could enclose "smaller" scopes, which would all
+have access to variables scoped "further out," but where variables within
+the "smaller" scopes would not be able to be accessed "further out".
+
+(Improve our language here).
+
+Besides local scope achieved through declaring a variable in a function,
+there is also block scope, where code is written between curly-braces.
+
+Outer scope, inner scope, enclosure.
+
+
+How does the internet work?
+======
+
+The internet is a global network of computers. Each computer must have a unique
+(Internet Protocol) address. When connecting to the internet via an ISP, you
+may get a temporary IP, versus over a LAN you may have a persistent IP address.
+
+Protocol Stack -- a protocol stack is typically built into a computer's OS, and
+is required to communicate on the internet. The internet uses TCP/IP protocol
+stack, which has several layers.
+
+    Applications Protocols Layer -- these are protocols specific to 
+    applications like www, email, file transfer protocol, &c.
+
+    Transmission Control Protocol Layer -- TCP routes packets (of information)
+    to specific applications on a computer by using the appropriate port number
+
+    Internet Protocol Layer -- IP directs packets of information to specific
+    computers by using IP addresses.
+
+    Hardware Layer -- Converts binary data to network signals (think modem 
+    sounds).
+
+A message being sent between 2 computers would start at the top (application)
+layer of the protocol stack just described, work it's way down, "reach"
+the internet, and then work it's way back up through the receiving computer's
+stack.
+
+    Packets are "manageably sized" pieces of a larger data message being sent.
+    Each packet is assigned a port, so that packets can be sent to the right
+    application / destination.
+
+Modems -- your modem at home is used to connect to your ISP (it takes internet
+talk and turns it into phone talk ?). The ISP receives your signals and routes
+them, using a dedicated computer, into a modem pool. A port server "serves"
+messages from the modem pool into a Backbone, which is a set of routers
+to connect to all the other backbones ??
+
+Network Service Providers are much larger entities that are interconnected.
+Each NSP must connect with three Network Access Points. At these "points," 
+packets of data may jump from one NSP's backbone to another's. NSP's 
+sell their bandwidth to smaller networks like ISPs and such.
+
+Routing tables are kept by each router connected to the internet,
+Routers are connected between networks to route packets between them.
+Every router knows its sub-networks, and which IP addresses they use.
+Routers typically do not know IP addresses "above" them.
+
+When a packet reaches a router, the IP address given to the packet
+by the IP layer of the TCP/IP protocol is examined by the router, and if
+the appropriate "route" is listed in its table, the packet is sent to that
+network / destination. If it isn't in the table, then the packet gets sent
+on a default route, which is typically up to a "higher" layer backbone.
+Ideally, sometime at or before the highest backbone level, a route will be
+found for the packet, and it will be sent through more and more "local"
+routers until it reaches its final destination.
+
+Domain Name Service -- a DNS is a distributed database which keeps track
+of computer's names and allows you to refer to a destination without you
+or your computer necessarily knowing the ultimate IP address of this 
+destination computer. This database is hosted on servers piecemeal, so that
+no single computer hosts the entire database -- if the server that is reached
+doesn't have the desired destination in its database, it is sent onto another
+server.
+
+the DNS is structured in a similar way to the ISP backbone structure. When an
+internet connection is set up, several DNS servers are established. Without
+a DNS, you would need to know the specific IP addresses of wherever you're
+trying to go!
+
+HyperText Transfer Protocol -- the "world wide web" utilizes the HTTProtocol
+to communicate between browsers & servers. The HTTP sits above the application
+layer of the protocol stack, and it is used by specific apps to communicate.
+Clients, aka browsers, send requests to servers for information, with each
+request requiring a separate connection. Even just a single page requires
+several connections to retrieve all of the data looking to be loaded on the
+page.
+
+Request for Comment -- An RFC is a publication by the Internet Society,
+which develops standards for the internet. An RFC is authored in the form
+of a memorandum describing research, methods, developments, &c. applicable
+to the workings of the internet. It is then submitted for peer-review, or
+to convey new concepts, information, or potentially humor. 
+
+The Internet Engineering Task Force adopts some RFC's as standards, but
+as some RFC's are more experimental in nature, they are not standardized.
+
+
+Simple Mail Transfer Protocol -- The mail client (gmail, outlook) connects to
+its default mail server, and the connection is maintained. Once the connection
+is made, the mail server sends a first message to identify itself, and then
+there's a little handshaky thing using SMTP commands. The client will then
+use SMTP messages to check, send, modify mail or whatever. The connection is
+only closed once the client sends a SMTP QUIT command.
+
+TCP allows computers to use and be connected via different applications by
+asssigning data packets with unique port numbers that can be "open"
+simultaneously. The TCP layer assigns port numbers and other information
+that is required to "parse" the packets or chunks of data.
+
+For each packet of data received, TCP mandates that the receiver send back a
+message to the sender which lets them know that the data was received. A
+checksum is also included in the TCP header in order to error-check the
+received data. TCP include *no* IP information.
+
+TCP is a 
+    connection-oriented:    there must be a connection established before data
+                            is exchanged.
+    
+    reliable:               the exchange is "vouchsafed" using confirmation
+                            messages and error checksums.
+
+    byte stream service:    ???
+
+IP, by contrast, is an unreliable, connectionless protocol, i.e. a connection
+doesn't need to be established for a message to be sent, and there is no check
+to see if it was received.
+
+Each of these protocols uses a 20 byte long header, paired with data looking
+to be sent from the application layer, to make a complete packet to be
+transmitted over the internet.
+
+======
+
+
+How does a browser work?
+======
+
+A browser is an application used to [do the internet]. It retrieves 
+information, formats it, interprets it, etc. Browsers use a rendering engine
+to determine exactly how things will look, with different browsers performing
+in slightly different ways.
+
+Pages, images, videos, sound clips, and other form of data has it's own web
+address, known as a Uniform Resource Locator (URL).
+
+Cookies are used by websites, and saved via your browser, in order to save and
+retrieve information about you.
+
+HTML and CSS specify how a webpage will be displayed, and these specifications
+are maintained by the World Wide Web Consortium, another standards org. for the
+web. Nowadays, all web browsers more or less conform to these specifications.
+
+Layers --
+    UI -- All parts of the browser besides the displayed webpage.
+    Browser Engine -- Go-between for the UI and the rendering engine.
+    Rendeering Engine -- Responsible for displaying the webpage.
+    Networking -- Performs network calls for data to be transmitted.
+    JS interpreter -- Nuff said.
+    UI Backend -- I don't get it...but it's like for drawing basic stuff.
+    Data Persistence -- Storing data like cookies etc.
+
+A browser engine acts as a go-between for the browser's UI and the rendering
+engine. A browser also involves a javascript interpreter.
+
+Each tab that you have open is running a different rendering engine.
+
+Basic Flow --
+    The networking layer sends requests for document information, typically in
+    8kb chunks. The HTML documents are then parsed and converted
+    into elements of the content tree known as "DOM nodes" by the rendering
+    engine. Then the engine will parse style data (either inline or CSS) and
+    visual instructions in the HTML document to create the render tree.
+
+    The Render tree contains nodes (as rectangles) with attributes like color
+    and dimension, and are "ordered" correctly to be displayed on the page.
+
+    Then there is a layout process which assigns each node its appropriate
+    coordinates for display on the web page. Then each node is painted by
+    using the UI backend (so that it looks like other stuff in your OS?).
+
+    And then it's all displayed!
+
+Parsing -- Parsing a document involves interpreting the code and
+    representing it via a predetermined, "context-free" grammar.
+
+    Parsing involves the sub processes of lexical analysis and syntax analysis.
+
+    Lexical analysis (via the 'lexer') divides its input into tokens (think 
+    words).
+
+    Syntax analysis is the real parsing that organizes these tokens.
+
+    These sub-processes work iteratively, in that the parser will request a 
+    token from the lexer. It will then match it with an existing "rule" that
+    applies to this token, or it will save the token internally if no rule is
+    found, proceeding to ask for more tokens until a rule is found to match
+    all of these "stored" tokens. If there is never a rule found, an 
+    exception is raised (??), meaning that there must have been some kind of
+    syntax error.
+
+    Backus-Naur form can be used to express syntax (it is itself a metasyntax!)
+
+    Parsing types can be categorized as either:
+    Top-down parsing -- which first examines the high level structure of a
+    syntax and works down, as in first defining expressions and then defining
+    terms?
+    
+    Bottom-up parsing -- scans the input until a unit that can match a rule is
+    found. This occurs for the entire input, the matched-rules are stored in a
+    stack, and then it starts over or....idk....
+
+    And actually, parsers are typically generated, in that parser/lexer
+    generators are written in order to be fed syntax rules &c. to more
+    efficiently create lexers and parsers.
+
+
+    DTD -- Document type definition...???
+
+    DOM -- Document object model, the object-presentation of an HTML document
+    for other uses (like javascript, etc.).
+
+    HTML syntax is not a context free grammar -- in order to be interpreted, it
+    needs to have a formal parser written for it (??), which is because:
+        It's a loose / forgiving language
+        Browsers have built in error-tolerance for well known cases of bad code
+        The parsing process is "re-entrant," i.e. script elements can 
+            add more elements that need to be parsed themselves (dynamic?)
+
+    Therefore, browsers use custom parsers for parsing HTML. The algorithm
+    for this constists of the tokenization stage and the tree construction
+    stage. Tokenization consists of parsing the input into tokens, such as 
+    start tags and end tags, attribute names and values. This all happens
+    until the end of the input document is reached, after which, the
+    tree construction algorithm does stuff...
+
+    Tokenization --
+        The tokenization algorithm's output is an HTML token. This algorithm
+        operates as a state machine, which consumes one or more characters of
+        the input and updates the next state depending on the input characters.
+        For a similar character(s) input, the state may be changed differently
+        depending on the current state (i.e. it's contextual). The starting 
+        state is the "Data State," and if an opening "<" tag is encountered,
+        the state changes to "Tag Open State," then if an alphabetic character
+        is encountered, the state is changed to "Tag name state," and continues
+        until a closing ">" tag is encountered. USW
+
+    Tree Construction Algorithm --
+        Now that tokenization is complete, we move on to tree construction (TC)
+        
+        Home-girl says when a parser is created the Document object is also
+        created. In tree consruction, the DOM tree (with the document as its 
+        root) will be modified and individual elements will be added. For
+        every token that is established, a corresponding DOM element will
+        be created, added to the DOM tree, and added to a stack of open 
+        elements. The TC algorithm also works as a state-machine, with states
+        referred to as insertion modes. The input to this state-machine is
+        a sequence of tokens created in the tokenization stage.
+
+    Once parsing is finished, the document is marked as "interactive" and
+    scripts that have been deferred to be executed after the document is parsed
+    will begin being parsed. Then the document state will be set to "complete"
+    and a "load" event will initiate.
+
+    Browsers have a built in degree of error tolerance which is not
+    standardized but (similar to the UI of most browsers) has been developed
+    somewhat consistently across browsers over time.
+
+    Unlike HTML, methods for parsing CSS are well defined and don't need their
+    own algorithmically produced parser -- i.e. you can build a dedicated
+    parser.
+
+    Scripts get parsed synchronously (i.e. when a script is encountered,
+    the parsing of the document stops until the script is executed). As
+    alluded to above, scripts can also be marked as "deferred" in order to be
+    executed after the document is fully parsed / loaded.
+
+    Style sheets and scripts often relate to one another, so there are
+    different ways of dealing with this during parsing, such as not loading
+    any scripts that refer to style sheets until after everything has been
+    loaded.
+
+    Render Tree Construction --
+        As the DOM tree is being constructed, the browser constructs the render
+        tree, which is the visual representation of the DOM tree. The render
+        tree's purpose is to allow contents of the document to be painted in
+        the correct order. Each element is referred to as a renderer (or
+        a frame, in the case of FireFox).
+
+
+
+
+
+
+
+Content / DOM Tree -- 
+
+Render Tree -- 
+
+
+
+
+
+
+
+======
+
+
+Is HTML stored in Memory or what?
+
+blah blah blah
+
+
+What is HTTP. Requests
+
+blah blah blah
+
+
+What is the box model
+
+blah blah blah
+
+
+What is a promise
+
+blah blah blah
+
+
+What is AJAX
+
+blah blah blah
+
+
+Why do we use ORMs
+
+blah blah blah
+
+
+What is ACID
+
+blah blah blah
+
+
+What is a transaction
+
+blah blah blah
+
+
+What is the n+1 problem
+
+blah blah blah
+
+
+What is REST?
+======
+REST stands for Representational State Transfer, and typically takes advantage
+of HTTP protocols for web APIs.
+
+A RESTful API has 6 key constraints:
+  
+  Client-Server
+  ======
+
+  This constrait operates on the concept that the server and client should be
+  separate from one another, and should be able to be developed independently
+  while they both can operate. You should be able to change things about your
+  client without server needing to be updated to match. This allows each
+  application (or domain of the overaul application) to develop independently.
+
+  
+  Stateless
+  ======
+
+  By being stateless, no data is stored on a server between calls -- each call
+  contains all of the information it needs in order to be complete (such as
+  API key or access token, user id, etc.). Any state is stored on the client
+  (like session cookies or whatever.)
+
+
+  Cache
+  ======
+
+  Since a stateless API will likely increate the size of loads for any call (or
+  the number of calls?), RESTful design encourages the storage of cacheable
+  data. Caching data (which essentially amounts to storing frequently used
+  portions of data in memory) decreases loading times as well as the number of
+  server requests necessary (you already got your login information, I don't
+  need to give it to you again.)
+
+
+  Uniform Interface
+  ======
+
+  Uniformity is typically achieved by using HTTP with URI resources, CRUD data-
+  base structuring, and JSON. Implementing these allows the API to respond to
+  requests uniformly, regardless of the language they were originating from
+  (this is called language agnostic). A get is a get, a post is a post, etc.
+
+
+  Layered System
+  ======
+
+  Each layer of our API's system should have specific functionality and
+  responsibilities, in order to create a more scalabale and modular
+  application. Given that these layers are treated modularly, things can
+  be swapped in and out as technologies evolve, for instance. This is also
+  advantageous for security, since each layer can be designed to account for
+  security vulnerabilities.
+
+
+  Code on Demand -- (the only "optional" constraint)
+  ======
+
+  The concept of code on demand allows for code, or sub-apps / applets to be
+  transmitted "into" the API for its use of them, creating a "smart"
+  application which isn't solely dependent on its own code. Needless to say,
+  the implementation of this constraint raises security concerns.
+
+  To put in summary, RESTful design is a conceptual framework (approach to 
+  design) that encourages consistency of functionality, modularity,
+  and front-loading (as in front-end) when designing a web app!
+
+The Pillars of OO Programming:
+======
+
+Polymorphism:
+  blah blah blah
+Specialization:
+  blah blah blah
+Inheritance:
+  blah blah blah
+Encapsulation:
+  blah blah blah
+Abstraction:
+  blah blah blah
+Object:
+  blah blah blah
+Class:
+  blah blah blah

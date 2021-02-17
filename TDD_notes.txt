@@ -1,0 +1,84 @@
+Test-driven development:
+
+Development that is *centered* around developing tests.
+
+Thinking about things as an engineered solution
+
+
+Testing vs. TDD
+======
+Tests are written to see if something are working according
+to some specification.
+
+In TDD, tests are written first, in order to define how
+your code needs to behave, prior to writing the actual code.
+
+"if you can't test it, you need to refactor"
+
+
+What are the pieces of a test --
+
+How do you think through a problem using tests --
+
+A test is a function that takes 2 values --
+What you want to test
+The value you want to test it with.
+
+Code golf!
+return args.reduce((a,b) => a+b)
+
+Jest
+
+Components of a test
+======
+describe  - describing what you're testing
+test      - 
+expect    - assertion library
+
+these things get imported into the global scope of whatever
+program you're running a test suite on.
+
+describe('five()', () => {
+  test('should return 5', () => {
+    expect(five()).toBe(5)
+  })
+})
+
+expect stores the function that you feed it, and then
+runs values on it (such as .toBe())
+
+If you write a test that doesn't throw an error, you've
+written a test that always passes!
+
+Make sure your test CAN fail!
+
+Unit testing vs. Integration testing vs. End-to-end testing
+
+
+Testing something with no external dependencies is the easiest
+
+front-end
+  UI
+  business logic
+  network connection
+
+back-end
+  incoming requests
+  business logic
+  persistence layer
+
+  the outermost ends of the front-end and back end
+  are hardest to test!
+
+To make things as testable, you want the tested components
+of your application to be pushed as much as possible towards
+the middle
+
+unit testing is most nimble
+
+
+extract info from UI
+pass info into something else to calculate values
+write the result back to the UI
+
+extract an array, return invoice, 
