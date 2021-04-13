@@ -1,0 +1,28 @@
+Naming Things:
+  Do your absolute best to not use comments, but to name functions and
+  variables meaningfully.
+
+  Variables should be named as nouns. 
+
+  For functions, try to pick a description of the return value.
+
+  noise words to avoid:
+      The
+      Info
+      Data
+      Variable
+      Object
+      Manager
+
+  If you can't name something concisely, it may be time to refactor your Code
+  so that things *can* be named simply.
+
+  Make sure the name is pronouncable, and easily searchable
+
+  Consistently use one word for a concept (i.e. decide between get or fetch)
+
+Writing Functions:
+  Functions should only do one thing
+  That thing should be stated in its name
+  This will cause the function to be short, and to utilize other, short
+  functions with clear names.

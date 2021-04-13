@@ -1,0 +1,113 @@
+1.  What's the difference between undefined and null
+
+  undefined -- undefined is a value that a variable will receive if it has been
+  declared but not assigned a value (or it has been explicitly been assigned an
+  undefined value). Non-existant / undeclared properties of (declared /
+  existing) objects will also have this value.
+
+  null -- null is an empty or 'non-value' that *has* been assigned to a
+  variable.
+
+  Null and Undefined are 2 of the six falsy values in javascript (the other 4
+  being: 0, false, an empty string, and NaN).
+
+  They are also both primitive values
+
+  ( null !== undefined ) would return true, because, although they are both falsy,
+  they are not strictly equivalent. They are, however, loosely equivalent
+  (i.e. ( null == undefined ) would return true).
+
+  Passing null into a function as an argument will use null as a value, but
+  passing undefined into a function in this way will result in the default value
+  for this parameter being used (if it exist).
+
+  N.B. (typeof null) returns an object!
+  ((typeof undefined) returns undefined)
+
+
+
+2.  what does the && operator do?
+3.  What does the || operator do?
+
+  The && operator is the logical AND operator, and checks the truthiness of 2
+  operands. The || operator is the logical OR operator, and checks the 
+  truthiness of 2 operands. The syntax for both operators is:
+
+  ( [operandOne] [operator] [operandTwo] ) e.g. (1 && 2), or (4 || ''), etc.
+
+  Either operator will *always* return the value of *exactly* one of the two
+  operands provided. i.e. (from Marius Schulz):
+    A && B returns the value A if A can be coerced into false; 
+      otherwise, it returns B.
+    A || B returns the value A if A can be coerced into true;
+      otherwise, it returns B.
+
+  In the case of conditionals and other control-flow statements, the idea is
+  whether or not these operators evaluate to a truthy value. For instance,
+  if a conditional is supposed to evaluate the expression ("big" && "small"),
+  it will evaluate it as true, because the && operator will return "big",
+  which is truthy.
+
+  N.B. Any value can be coerced into the boolean value equivalent to its
+  truthiness by applying the NOT operator (!) twice. 
+  e.g.
+  const ourVar = '';
+  console.log(!!(ourVar));
+  // false
+
+
+
+4.  Is using the + or unary plus operator the fastest way in converting a
+    string to a number?
+
+  Yes! It seems...
+
+  For starters, a unary operator is an operator that takes a single operator
+  and performs an operation using its value. The unary plus operator (+)
+  takes an operator and attempts to convert it to a number (and will convert
+  a value to NaN if it cannot be successfully converted to a number).
+
+  Using the unary plus operator is only one of several ways to convert a
+  string to a number in JS, but according to several people on the internet, 
+  it is the fastest way based on the (now defunct) jsPerf's benchmarking
+  results.
+  
+  Other options include:
+    parseInt()
+    parseFloat()
+    Number()
+    multiplying by 1 (e.g. '123'*1)
+
+
+5.  What is the DOM?
+
+  The DOM (Document Object Model) is a 
+
+
+6.  What is event Propagation?
+
+  Event Propagation is
+
+
+7.  What's event Bubbling?
+
+  Event Bubbling is
+
+
+8.  What's event capturing?
+
+  Event Capturing is
+
+
+9.  What's the difference between the methods event.preventDefault() and
+    event.stopPropagation() ?
+
+  event.preventDefault() --
+  
+  event.stopPropagation() --
+
+
+10. How would you know if the event.preventDefault() method was used in an
+    element?
+
+  If event.preventDefault() was used in an element, you would know by
