@@ -23,6 +23,47 @@ Naming Things:
 
 Writing Functions:
   Functions should only do one thing
+  
   That thing should be stated in its name
+  
+  A function is only doing one thing if you can't *meaningfully* extract
+  another function from it.
+  
   This will cause the function to be short, and to utilize other, short
   functions with clear names.
+
+  Conditionals should be encapsulated in a function, i.e.:
+    if (isBirthdayToday) {
+      console.log('happy birthday ' + user.name);
+    } 
+  & the body of a conditional should be a function call (with a
+  nice name!)
+
+  Functions should have 2 or fewer arguments. 3 or more only when necessary.
+  If a function needs more arguments, they could probably be refactored
+  and grouped together as an object.
+
+  Functions should not indent more than a couple of lines -- if more, it's a
+  sign that it's probably time to extract.
+
+  Functions should avoid boolean arguments. Just write 2 different functions 
+  instead.
+
+  Avoid switch statements -- use classes and polymorphism (?)
+
+  Avoid side-effects whenever possible (changing the state of the system).
+  If a function has a side effect, it should return void.
+  If a function returns something, it should not have a side-effect.
+
+Don't Repeat Yourself :-)
+
+Leave Early
+  instead of if...else-ing all the way til you're checking for something is 
+  null, work in reverse -- i.e. do your most basic check first, then work
+  backwards to the most complicated.
+
+  i.e. do a Guard Case. If you're looking for the largest something, look for
+  the largest things first!
+
+  N.B. this almost always relies on using multiple returns per a given 
+  function, which may not be ideal.

@@ -1,0 +1,35 @@
+Notes from Testing React Applications, v2 on Front End Masters
+
+Forms of testing
+
+  Static code analysis
+    do not require written tests / configurations
+    (linting? static type checking?)
+    (Prettier can be used to format / style code)
+
+  Unit testing / Integration testing can be a bit fluid with React because
+  unit testing would ideally be taking care of dependencies.
+  
+  ////  ERROR NOTES BEGIN  ////
+    Received error while trying to run tests for the item-list.js in /simple-react:
+      Error: `fsevents` unavailable (this watcher can only be used on Darwin)
+
+    So I entered this in command line, 
+      $ brew install watchman
+    
+    at the recommendations of the people talking about this issue on github here
+      https://github.com/jest-community/vscode-jest/issues/423
+
+    and then I got this:
+      dyld: Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.67.dylib
+
+    so I tried running:
+      $ brew upgrade
+    and then:
+      $ brew cleanup
+
+    and then everything worked and I'm very glad about that because I have no 
+    idea what's going on :^)
+  ////  ERROR NOTES END  ////
+
+  

@@ -22,6 +22,20 @@ Configuration file:
     /etc/ansible/ansible.cfg
       regular .cfg file in /etc (need sudo)
 
+  ansible config files can contain many options, settings, and variables that your playbooks will use.
+
+  Indicate inventory location:
+
+    inventory = {{ host file directory }}
+
+  If you wish to avoid host key checking for a single command run, simply use:
+  $ ANSIBLE_HOST_KEY_CHECKING=False ansible ...
+  which will set up a known_hosts file
+
+  To make it permanent, simply add the following line to your ansible.cfg:
+  host_key_checking = False
+
+
 Hosts file:
   
   The hosts (or inventory) file stores a list of hosts that ansible will be running plays/playbooks on,
@@ -40,4 +54,105 @@ Hosts file:
     centos3
 
   and then can be referred to by their group.
+  
+  By default, the [all] group (whether listed or not) will contain all machines listed in the hosts file.
+
+  Hosts are specified when running the ansible command (as an option) either indidividually or by 
+  referring to some defined or implicit (like [all]) group.
+
+  You can indicate if you want ansible to have root privileges (or other user account
+  options) by indicating this via the ansible_user host variable in your host file:
+
+    {{ host name }} ansible_user=root
+
+  Typically, the SSH Daemon (sshd?) is running (listening) on port 22. In the case that it isn't, this can
+  be accounted for with the ansible_port host variable:
+  
+    {{ host name }} ansible_port={{ port number }}
+  
+  ...or by using the following notation:
+    {{ host name }}:{{ port number }}
+
+  You can add a [control] group which includes your ansible control node(s), like so:
+
+    [control]
+    ubuntu-c ansible_connection=local
+    
+  Ranges can be used to more elegantly indicate host systems in your inventory file
+
+    centos1
+    centos2
+    centos3
+
+  ...can become:
+
+    centos[1:3]
+  
+  (and this can be easily tested with --list-hosts)
+  this can be done as long as there is complete commonality between these systems, i.e. if any host vars
+  are different between the systems then those systems will need to be listed (with host vars) separately:
+
+    [centos]
+    centos1 ansible_user=root ansible_port=2222
+    centos[2:3] ansible_user=root
+  
+  Host vars can be set for whole groups of systems (known as group vars)
+  (continuing the above example by extracting out the ansible_user and ansible_port variables):
+
+    [centos:vars]
+    ansible_user=root
+
+  Groups can be grouped together using the :children declaration (here, linux is the name of the group,
+  and the :children declaration indicates that the following is a list of children groups):
+
+    [linux:children]
+
+  Host vars can be set for all machines using the [all:vars] group, however, specific host entries
+  will take precedence over group vars:
+
+    [all:vars]
+    ansible_port=420
+
+  the -e flag can be used for setting extra vars when running the $ ansible command, 
+  
+Commands:
+
+  -m
+    runs an ansible module in a "one-liner" / ad hoc.
+
+    ping
+      This will run the ping module against all the hosts in your inventory, confirming that there is a 
+      working connection between the ansible control node and the host nodes.
+
+    command
+      this module will run any command (supplied as an argument) on the host system. 
+      e.g.
+
+        $ ansible all -m command -a 'id' -o
+
+      because the command module is so handy, it is the default module that ansible will run, so the
+      above command could instead be typed:
+       
+        $ ansible all -a 'id' -o
+
+      some useful things include:
+        $ id
+          prints the current user's details (on the host system, when executed as an ansible command)
+
+
+
+  --list-hosts
+    displays the hosts running currently
+    e.g.
+      $ ansible all --list Hosts
+    will list all the hosts in your current inventory.
+    
+    you can even do whacky reg-ex stuff...
+
+    
+    
+
+
+
+
   
