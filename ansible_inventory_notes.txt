@@ -114,45 +114,4 @@ Hosts file:
     ansible_port=420
 
   the -e flag can be used for setting extra vars when running the $ ansible command, 
-  
-Commands:
 
-  -m
-    runs an ansible module in a "one-liner" / ad hoc.
-
-    ping
-      This will run the ping module against all the hosts in your inventory, confirming that there is a 
-      working connection between the ansible control node and the host nodes.
-
-    command
-      this module will run any command (supplied as an argument) on the host system. 
-      e.g.
-
-        $ ansible all -m command -a 'id' -o
-
-      because the command module is so handy, it is the default module that ansible will run, so the
-      above command could instead be typed:
-       
-        $ ansible all -a 'id' -o
-
-      some useful things include:
-        $ id
-          prints the current user's details (on the host system, when executed as an ansible command)
-
-
-
-  --list-hosts
-    displays the hosts running currently
-    e.g.
-      $ ansible all --list Hosts
-    will list all the hosts in your current inventory.
-    
-    you can even do whacky reg-ex stuff...
-
-    
-    
-
-
-
-
-  

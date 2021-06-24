@@ -1,0 +1,89 @@
+ansible module notes
+
+-m (argument)
+      runs an ansible module in a "one-liner" / ad hoc.
+
+      ping
+        This will run the ping module against all the hosts in your inventory, confirming that there is a 
+        working connection between the ansible control node and the host nodes.
+
+Setup module:
+  the setup module gathers "facts" about hosts in the inventory which can then be used in playbooks.
+
+File module:
+  the file module can modify the existence and contents of files and directories, using
+  path and state arguments (multiple arguments can be listed in a command by enclosing them
+  in single-quotes)
+
+  create a file:
+  
+    $ ansible all -m file -a 'path=/tmp/test state=touch'
+
+  change permissions (chmod or change mode)
+
+    $ ansible all -m file -a 'path=/tmp/test state=file mode=600'
+
+  
+Copy module:
+  the copy modules copies files/directories from the control node onto the host systems.
+  (the fetch module can be used in reverse i.e. to copy files from hosts to the control node)
+  this module takes the arguments src and dest, like so:
+
+    $ ansible all -m copy -a 'src=/source/dir dest=/destination/dir'
+
+  the argument remote_source=yes can be used to indicate that we're looking to copy a file
+  on the host system to itself.
+
+
+Command module:
+  this module will run any command (supplied as an argument) on the host system.
+  
+  N.B. this does NOT run in shell, so shell commands cannot be used (use the [shell] module instead)
+
+  e.g.
+
+    $ ansible all -m command -a 'id' -o
+
+  because the command module is so handy, it is the default module that ansible will run, so the
+  above command could instead be typed:
+  
+    $ ansible all -a 'id' -o
+
+  some useful things include:
+    $ id
+      prints the current user's details (on the host system, when executed as an ansible command)
+
+  the 'creates' and 'removes' variables are useful in the command module for creating and removing files.
+  for instance, it can be used in conjunction with the touch command like so:
+
+    $ ansible all -a 'touch /your/dir/file_name.txt creates=/your/dir/file_name.txt'
+
+  The creates variable in this command makes the command Indempotent because because ansible will
+  detect if the file already exists, and if it does, the command will be skipped (even though touch also
+  updates a file's 'time,' it wouldn't be used because of the create variable).
+
+  Likewise, the removes variable works in reverse, where the command will only be executed if the file
+  actually exists.
+
+  In either of these cases, the command being run doesn't need to actually create or remove something,
+  these variables simply add a layer of logic to the command being executed.
+
+  
+
+
+--list-hosts
+  displays the hosts running currently
+  e.g.
+    $ ansible all --list Hosts
+  will list all the hosts in your current inventory.
+  
+  you can even do whacky reg-ex stuff...
+
+Color notation and Idempotence:
+  Red means failed
+  Yellow means changes were made, with success
+  Green means success
+
+  Indempotence:
+    A process can be said to be Indempotent if the result of running it once is the same as running it
+    twice is the same as running it 100 times.
