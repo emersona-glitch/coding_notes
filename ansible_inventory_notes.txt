@@ -1,0 +1,43 @@
+ansible inventory notes
+
+Configuration file:
+
+  you can find which config file you're using by running
+  $ ansible --version
+
+  Priority of ansible config file from highest to lowest:
+    /home/ansible/.ansible/plugins/modules
+    /usr/share
+
+    ANSIBLE_CONFIG environment variable
+      nuff said. achieved with: 
+        $ export ANSIBLE_CONFIG={{ path to your ansible file }}
+ 
+    ./ansible.cfg
+      .cfg file in the current directory
+
+    ~/.ansible.cfg
+      hidden file in the home directory
+    
+    /etc/ansible/ansible.cfg
+      regular .cfg file in /etc (need sudo)
+
+Hosts file:
+  
+  The hosts (or inventory) file stores a list of hosts that ansible will be running plays/playbooks on,
+  the file is typically written in .ini format, but can also be written in json or yaml.
+
+  hosts can be grouped together like so:
+
+    [ubuntu]
+    ubuntu1
+    ubuntu2
+    ubuntu3
+
+    [centos]
+    centos1
+    centos2
+    centos3
+
+  and then can be referred to by their group.
+  
