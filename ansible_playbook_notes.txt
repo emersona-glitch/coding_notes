@@ -1,0 +1,42 @@
+udemy situation
+
+plays are dictionaries, several plays can be included in a playbook
+
+Sections of a playbook
+  
+  Hosts     - The machines/locations where the play will run, aka the 'targets'
+    includes:
+    'Target' section:
+      user: which user to log in as
+      become: privilege escalation
+      ansible_connection
+      gather_facts: gather_facts either true or false, to gather host machine facts
+
+  Vars      - variables that will be used in the play
+    variables can be referenced using jinja scripting --
+    e.g. for simply referencing a specific variable you'd use: {{ your_var }}
+    
+    variables can passed in from the command line using -e or --extra-vars
+    e.g.
+    $ ansible-playbook playbk.yaml
+
+  Tasks     - list of tasks to be executed, also setup and teardown tasks
+    includes:
+      - name: human readable name of the task (also for reference)
+      - module(s): modules to run as a part of the task
+      - when: arguments given to signal when to run the task
+
+
+  Handlers  - listed under the handlers key follow the same syntax as tasks, 
+  called from the tasks section via the use of the 'notify' key in the task.
+  
+  Only get executed:
+    when there is a change, 
+    once, 
+    and at the end of a text.
+
+  
+  Roles     - roles to be imported into the play (sort of like meta plays)
+
+f5 Ansible lab situation
+
